@@ -269,19 +269,19 @@ public class NLM_Denoising implements PlugInFilter/*, DialogListener*/ {
         if(extent[0] < 0)
             extent[0] = 0;
 
-        if(extent[1] > width)
+        if(extent[1] >= width)
             extent[1] = width-1;
 
         if(extent[2] < 0)
             extent[2] = 0;
 
-        if(extent[3] > height)
+        if(extent[3] >= height)
             extent[3] = height-1;
 
         if(extent[4] < 0)
             extent[4] = 0;
 
-        if(extent[5] > depth)
+        if(extent[5] >= depth)
             extent[5] = depth-1;
 
         // Return the extent
@@ -1102,16 +1102,18 @@ public class NLM_Denoising implements PlugInFilter/*, DialogListener*/ {
      * @param args unused
      */
     public static void main(String[] args) {
-        // set the plugins.dir property to make the plugin appear in the Plugins menu
-        Class<?> clazz = NLM_Denoising.class;
-        String url = clazz.getResource("/" + clazz.getName().replace('.', '/') + ".class").toString();
-        String pluginsDir = url.substring(5, url.length() - clazz.getName().length() - 6);
-        System.setProperty("plugins.dir", pluginsDir);
+		// Setup the plugin directory path
+		System.setProperty("plugins.dir", "/Applications/Fiji.app/plugins");
 
-        // start ImageJ
-        new ImageJ();
+		// start ImageJ
+		new ImageJ();
 
-        // Testing
-
+//		// open the Clown sample
+//		ImagePlus image = IJ.openImage("src/test/resources/example_original.zip");
+//		image.show();
+//
+//		// run the plugin
+//		Class<?> clazz = NLM_Denoising.class;
+//		IJ.runPlugIn(clazz.getName(), "");
     }
 }
