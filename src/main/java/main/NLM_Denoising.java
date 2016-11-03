@@ -1,3 +1,5 @@
+package main;
+
 import Jama.Matrix;
 import ij.IJ;
 import ij.ImageJ;
@@ -93,23 +95,23 @@ public class NLM_Denoising implements PlugInFilter/*, DialogListener*/ {
 
         // Display GUI
         GenericDialog gui = new GenericDialog("NLM Denoising");
-        gui.addPanel(new SeparatorPanel("Smoothness control"));
+        gui.addPanel(new gui.SeparatorPanel("Smoothness control"));
         gui.addNumericField("Smoothness decay", m_decayControl, 1);
         gui.addCheckbox("Keep details", m_keepDetails);
 
-        gui.addPanel(new SeparatorPanel("Speedness control"));
+        gui.addPanel(new gui.SeparatorPanel("Speedness control"));
         gui.addNumericField("Reduction factor", m_blockReductionFactor, 0);
 
-        gui.addPanel(new SeparatorPanel("Neighborhood options"));
+        gui.addPanel(new gui.SeparatorPanel("Neighborhood options"));
         gui.addNumericField("Patch size", m_patchSize, 0);
         gui.addNumericField("Search window size", m_windowSize, 0);
 
-        gui.addPanel(new SeparatorPanel("Other options"));
+        gui.addPanel(new gui.SeparatorPanel("Other options"));
         gui.addNumericField("Noise variance", m_variance, 1);
         gui.addCheckbox("True_3D", m_3D);
         gui.addCheckbox("Low light", m_lowLight);
 
-        // NOTE: This implies that the arguments cannot be recorded adn/or passed to plugin
+        // NOTE: This implies that the arguments cannot be recorded and/or passed to plugin
 //        gui.addDialogListener(this);    // The parameters are live-checked in the event listener
         gui.showDialog();
 
