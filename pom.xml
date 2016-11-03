@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+ http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>net.imagej</groupId>
+    <artifactId>pom-imagej</artifactId>
+    <version>14.8.0</version>
+    <relativePath />
+  </parent>
+
+	<groupId>sc.fiji</groupId>
+	<artifactId>imagej-nlm-denoising_</artifactId>
+	<version>1.2.1</version>
+
+	<name>plugins/imagej-nlm-denoising.jar</name>
+	<description>A plugin for ImageJ 1.X, implementing NLM image denoising.</description>
+
+  <developers>
+      <developer>
+          <id>ies-julien</id>
+          <name>Julien Pontabry</name>
+          <email>julien.pontabry@helmholtz-muenchen.de</email>
+          <url></url>
+          <organization>Helmholtz Institute of Epigenetics and Stem cells</organization>
+          <organizationUrl>http://www.helmholtz-muenchen.de/ies/index.html</organizationUrl>
+          <roles>
+              <role>founder</role>
+              <role>lead</role>
+              <role>developer</role>
+              <role>debugger</role>
+              <role>reviewer</role>
+              <role>support</role>
+              <role>maintainer</role>
+          </roles>
+          <timezone>+1</timezone>
+      </developer>
+  </developers>
+
+  <contributors>
+      <!--
+      NB: Need a least one element to override the parent.
+      See: https://issues.apache.org/jira/browse/MNG-5220
+      -->
+      <contributor><name>None</name></contributor>
+  </contributors>
+
+  <!-- <scm>
+		<connection>scm:git:git://github.com/IES-HelmholtzZentrumMunchen/imagej-nlm-denoising</connection>
+		<developerConnection>scm:git:git@github.com:IES-HelmholtzZentrumMunchen/imagej-nlm-denoising</developerConnection>
+		<tag>HEAD</tag>
+		<url>https://github.com/IES-HelmholtzZentrumMunchen/imagej-nlm-denoising</url>
+	</scm> -->
+
+  <properties>
+    <main-class>main.NLM_Denoising</main-class>
+  </properties>
+
+  <dependencies>
+      <!-- ImageJ dependencies -->
+      <dependency>
+          <groupId>net.imagej</groupId>
+          <artifactId>ij</artifactId>
+      </dependency>
+      <!-- JUnit dependencies -->
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <scope>test</scope>
+      </dependency>
+      <!-- Jama dependencies -->
+      <dependency>
+  			<groupId>gov.nist.math</groupId>
+  			<artifactId>jama</artifactId>
+  		</dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>${main-class}</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <repositories>
+      <!-- NB: for project parent, in case of partial checkout -->
+      <repository>
+          <id>imagej.public</id>
+          <url>http://maven.imagej.net/content/groups/public</url>
+      </repository>
+  </repositories>
+
+  <organization>
+    <name>Helmholtz Institute of Epigenetics and Stem cells</name>
+    <url>http://www.helmholtz-muenchen.de/ies/index.html</url>
+  </organization>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>net.imagej</groupId>
+        <artifactId>ij</artifactId>
+        <version>1.51e</version>
+      </dependency>
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.12</version>
+      </dependency>
+      <dependency>
+        <groupdId>gov.nist.math</groupId>
+        <artifactId>jama</artifactId>
+        <version>1.0.3</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+</project>
